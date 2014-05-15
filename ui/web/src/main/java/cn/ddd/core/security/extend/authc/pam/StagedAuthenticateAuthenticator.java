@@ -29,8 +29,7 @@ public class StagedAuthenticateAuthenticator extends ModularRealmAuthenticator {
 	 * (java.util.Collection)
 	 */
 	@Override
-	public void setAuthenticationListeners(
-			Collection<AuthenticationListener> listeners) {
+	public void setAuthenticationListeners(Collection<AuthenticationListener> listeners) {
 		super.setAuthenticationListeners(listeners);
 		setDefaultListeners(getAuthenticationListeners());
 	}
@@ -40,19 +39,15 @@ public class StagedAuthenticateAuthenticator extends ModularRealmAuthenticator {
 	 * 
 	 * @param listeners
 	 */
-	private void setDefaultListeners(
-			Collection<AuthenticationListener> listeners) {
+	private void setDefaultListeners(Collection<AuthenticationListener> listeners) {
 	}
 
 	@Override
-	protected AuthenticationInfo doAuthenticate(
-			AuthenticationToken authenticationToken)
-			throws AuthenticationException {
+	protected AuthenticationInfo doAuthenticate(AuthenticationToken authenticationToken) throws AuthenticationException {
 
 		notifyBefore(authenticationToken);
 		// 验证之前？
-		AuthenticationInfo authenticationInfo = super
-				.doAuthenticate(authenticationToken);
+		AuthenticationInfo authenticationInfo = super.doAuthenticate(authenticationToken);
 		// 验证之后
 		notifyAfter(authenticationToken, authenticationInfo);
 		return authenticationInfo;
@@ -62,19 +57,16 @@ public class StagedAuthenticateAuthenticator extends ModularRealmAuthenticator {
 		Collection<AuthenticationListener> listeners = getAuthenticationListeners();
 		for (AuthenticationListener listener : listeners) {
 			if (listener instanceof AuthenticationStageListener) {
-				((AuthenticationStageListener) listener)
-						.onBefore(authenticationToken);
+				((AuthenticationStageListener) listener).onBefore(authenticationToken);
 			}
 		}
 	}
 
-	private void notifyAfter(AuthenticationToken authenticationToken,
-			AuthenticationInfo authenticationInfo) {
+	private void notifyAfter(AuthenticationToken authenticationToken, AuthenticationInfo authenticationInfo) {
 		Collection<AuthenticationListener> listeners = getAuthenticationListeners();
 		for (AuthenticationListener listener : listeners) {
 			if (listener instanceof AuthenticationStageListener) {
-				((AuthenticationStageListener) listener).onAfter(
-						authenticationToken, authenticationInfo);
+				((AuthenticationStageListener) listener).onAfter(authenticationToken, authenticationInfo);
 			}
 		}
 	}
