@@ -11,18 +11,22 @@
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
 	default-init-method="init" default-destroy-method="destroy">
 
-	<bean id="userAccountDao" class="ui.web.realm.UserAccountDao" />
+	<bean id="passwordService"
+		class="org.apache.shiro.authc.credential.DefaultPasswordService" />
+		
+	<bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.PasswordMatcher"
+		p:passwordService-ref="passwordService" />
+
+	<bean id="userAccountDao" class="ui.web.realm.UserAccountDao"
+		p:credentialsMatcher-ref="credentialsMatcher" />
 	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager" />
-	<bean id="idGenerator"
-		class="cn.ddd.core.security.extend.session.mgt.eis.UUIDGenerator" />
+
+	<bean id="sessionIdGenerator"
+		class="org.apache.shiro.session.mgt.eis.JavaUuidSessionIdGenerator" />
+
 	<bean id="sessionDAO"
-		class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO">
-		<property name="sessionIdGenerator">
-			<bean
-				class="cn.ddd.core.security.extend.session.mgt.eis.SessionIdGeneratorAdapter"
-				p:idGenerator-ref="idGenerator">
-			</bean>
-		</property>
+		class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO"
+		p:sessionIdGenerator-ref="sessionIdGenerator">
 	</bean>
 
 	<bean id="sessionManager"
@@ -34,10 +38,8 @@
 		p:realm-ref="userAccountDao" />
 
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean"
-		p:securityManager-ref="securityManager" 
-		p:loginUrl="/login.jsp"
-		p:successUrl="/index.jsp" 
-		p:unauthorizedUrl="/unauthorized.jsp">
+		p:securityManager-ref="securityManager" p:loginUrl="/login.jsp"
+		p:successUrl="/index.jsp" p:unauthorizedUrl="/unauthorized.jsp">
 		<property name="filterChainDefinitions">
 			<value>
 				/index.jsp = anon

@@ -9,10 +9,13 @@ import java.util.Collections;
 import java.util.Set;
 
 import org.apache.shiro.authc.Account;
+import org.apache.shiro.authc.SaltedAuthenticationInfo;
 import org.apache.shiro.authc.SimpleAccount;
 import org.apache.shiro.authz.Permission;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
+import org.apache.shiro.util.ByteSource;
+import org.apache.shiro.util.StringUtils;
 
 /**
  * 模块：自定义的账号类，可以返回用户的任何信息，包括授权信息和角色信息，此类实现了Account，可以从Subject.
@@ -23,11 +26,13 @@ import org.apache.shiro.subject.SimplePrincipalCollection;
  * @version 1.0 2014年5月13日<br>
  *          Copyright 2014 XXX有限公司.
  */
-public class UserAccount implements Account {
+public class UserAccount implements Account, SaltedAuthenticationInfo {
 	private transient PrincipalCollection principalCollection;
 
 	private String username;
 	private String password;
+	// HashedCredentialsMatcher会用到这个属性
+	private String salt;
 
 	private Set<String> roles;
 	private Set<String> permissions;
@@ -78,10 +83,6 @@ public class UserAccount implements Account {
 		return password;
 	}
 
-	public void setCredentials(String credentials) {
-		this.password = credentials;
-	}
-
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -120,6 +121,14 @@ public class UserAccount implements Account {
 
 	public void setLocked(boolean locked) {
 		this.locked = locked;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
 	}
 
 	public boolean isCredentialsExpired() {
@@ -175,5 +184,10 @@ public class UserAccount implements Account {
 	 */
 	public String toString() {
 		return getUsername() != null ? getUsername() : "empty";
+	}
+
+	@Override
+	public ByteSource getCredentialsSalt() {
+		return StringUtils.hasLength(this.salt) ? ByteSource.Util.bytes(this.salt) : null;
 	}
 }

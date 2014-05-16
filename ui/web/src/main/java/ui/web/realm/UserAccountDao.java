@@ -30,7 +30,6 @@ public class UserAccountDao extends BaseSecurityRealm {
 		UserAccount account = new UserAccount();
 
 		account.setUsername(username);
-		account.setCredentials("1");
 
 		return account;
 	}
