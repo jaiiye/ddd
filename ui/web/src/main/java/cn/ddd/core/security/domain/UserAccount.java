@@ -47,8 +47,7 @@ public class UserAccount implements Account {
 	private boolean credentialsExpired;
 
 	public void setRealmName(String realmName) {
-		this.principalCollection = new SimplePrincipalCollection(this,
-				realmName);
+		this.principalCollection = new SimplePrincipalCollection(this, realmName);
 	}
 
 	public String getUsername() {
@@ -79,6 +78,10 @@ public class UserAccount implements Account {
 		return password;
 	}
 
+	public void setCredentials(String credentials) {
+		this.password = credentials;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -97,6 +100,18 @@ public class UserAccount implements Account {
 	@Override
 	public Collection<Permission> getObjectPermissions() {
 		return Collections.emptySet();
+	}
+
+	public Set<String> getPermissions() {
+		return permissions;
+	}
+
+	public void setPermissions(Set<String> permissions) {
+		this.permissions = permissions;
+	}
+
+	public void setRoles(Set<String> roles) {
+		this.roles = roles;
 	}
 
 	public boolean isLocked() {
@@ -136,8 +151,7 @@ public class UserAccount implements Account {
 			UserAccount sa = (UserAccount) o;
 			// principal should be unique across the application, so only check
 			// this for equality:
-			return (getUsername() != null ? getUsername().equals(
-					sa.getUsername()) : sa.getUsername() == null);
+			return (getUsername() != null ? getUsername().equals(sa.getUsername()) : sa.getUsername() == null);
 		}
 		return false;
 	}

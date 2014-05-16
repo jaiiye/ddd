@@ -27,6 +27,11 @@ public class UserAccountDao extends BaseSecurityRealm {
 
 	@Override
 	protected UserAccount findUserAccountByUsername(String username) {
-		return null;
+		UserAccount account = new UserAccount();
+
+		account.setUsername(username);
+		account.setCredentials("1");
+
+		return account;
 	}
 }
