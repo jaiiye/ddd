@@ -19,7 +19,7 @@ import cn.ddd.core.security.extend.realm.BaseSecurityRealm;
  * @version 1.0 2014年5月9日<br>
  *          Copyright 2014 XXX有限公司.
  */
-public class UserAccountDao extends BaseSecurityRealm {
+public class UserAccountRealm extends BaseSecurityRealm {
 	@Override
 	protected Collection<Permission> findPermissionsByRoleName(String roleName) {
 		return null;

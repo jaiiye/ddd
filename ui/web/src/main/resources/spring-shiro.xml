@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="
-	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
 	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
-	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
 	default-init-method="init" default-destroy-method="destroy">
 
 	<bean id="passwordService"
 		class="org.apache.shiro.authc.credential.DefaultPasswordService" />
-		
+
 	<bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.PasswordMatcher"
 		p:passwordService-ref="passwordService" />
 
-	<bean id="userAccountDao" class="ui.web.realm.UserAccountDao"
-		p:credentialsMatcher-ref="credentialsMatcher" />
+	<bean id="userAcountRealm" class="ui.web.realm.UserAccountRealm"
+		p:credentialsMatcher-ref="credentialsMatcher" depends-on="userAccountDao" />
+
 	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager" />
 
 	<bean id="sessionIdGenerator"
@@ -35,7 +33,7 @@
 
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager"
 		p:sessionManager-ref="sessionManager" p:cacheManager-ref="cacheManager"
-		p:realm-ref="userAccountDao" />
+		p:realm-ref="userAcountRealm" />
 
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean"
 		p:securityManager-ref="securityManager" p:loginUrl="/login.jsp"
