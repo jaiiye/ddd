@@ -7,7 +7,6 @@ package ui.web.realm;
 import java.util.Collection;
 
 import org.apache.shiro.authz.Permission;
-import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.springframework.context.ApplicationListener;
 
 import cn.ddd.core.dao.UserAccountDao;

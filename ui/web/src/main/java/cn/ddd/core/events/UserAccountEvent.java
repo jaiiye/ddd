@@ -4,6 +4,14 @@ import org.springframework.context.ApplicationEvent;
 
 import cn.ddd.core.security.domain.UserAccount;
 
+/**
+ * 用户账户事件<br>
+ * 模块：应用程序事件，继承自spring的事件对象<br>
+ * 描述：
+ * 
+ * @author 李乐 601235723@qq.com
+ * @version 1.0 2014年5月17日 Copyright 2014 XXX有限公司.
+ */
 public class UserAccountEvent extends ApplicationEvent {
 	private UserAccount userAccount;
 

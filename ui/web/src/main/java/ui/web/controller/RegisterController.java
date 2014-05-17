@@ -8,6 +8,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import cn.ddd.core.security.domain.UserAccount;
 import cn.ddd.core.service.UserService;
 
+/**
+ * 用户注册控制器<br>
+ * 模块：<br>
+ * 描述：
+ * 
+ * @author 李乐 601235723@qq.com
+ * @version 1.0 2014年5月17日 Copyright 2014 XXX有限公司.
+ */
 @Controller
 @RequestMapping("register")
 public class RegisterController {
