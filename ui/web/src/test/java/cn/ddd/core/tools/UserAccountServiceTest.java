@@ -23,6 +23,7 @@ public class UserAccountServiceTest {
 		userAccount.setUsername("lile");
 		userAccount.setCredentialsExpired(false);
 		userAccount.setLocked(false);
+		System.out.println(userAccount);
 	}
 
 }
