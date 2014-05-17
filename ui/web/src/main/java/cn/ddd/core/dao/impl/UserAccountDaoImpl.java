@@ -8,21 +8,33 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Repository;
 
 import cn.ddd.core.dao.UserAccountDao;
+import cn.ddd.core.events.UserAccountEvent;
 import cn.ddd.core.security.domain.UserAccount;
-import cn.ddd.core.security.extend.realm.BaseSecurityRealm;
 
-@Repository
-public class UserAccountDaoImpl extends BaseSecurityRealm implements UserAccountDao {
+@Repository("userAccountDao")
+public class UserAccountDaoImpl implements UserAccountDao {
+	@Autowired
+	private ApplicationEventPublisher eventPublisher;
 	@Autowired
 	private SessionFactory sessionFactory;
+
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
 
 	@Override
 	public void persist(UserAccount userAccount) {
 		Session session = sessionFactory.getCurrentSession();
 		session.persist(userAccount);
+		eventPublisher.publishEvent(new UserAccountEvent(this, userAccount));
 	}
 
 	@Override
@@ -32,14 +44,14 @@ public class UserAccountDaoImpl extends BaseSecurityRealm implements UserAccount
 	}
 
 	@Override
-	protected Collection<Permission> findPermissionsByRoleName(String roleName) {
+	public Collection<Permission> findPermissionsByRoleName(String roleName) {
 		return null;
 	}
 
 	@Override
-	protected UserAccount findUserAccountByUsername(String username) {
+	public UserAccount findUserAccountByUsername(String username) {
 		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("from UserAcount where username=:username");
+		Query query = session.createQuery("from UserAccount where username=:username");
 		query.setParameter("username", username);
 		return (UserAccount) query.uniqueResult();
 	}

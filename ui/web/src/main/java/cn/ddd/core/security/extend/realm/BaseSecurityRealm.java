@@ -13,6 +13,7 @@ import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.Permission;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.authz.permission.RolePermissionResolver;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -186,7 +187,7 @@ public abstract class BaseSecurityRealm extends AuthorizingRealm implements Role
 		Object principal = getAvailablePrincipal(principals);
 		if (principal instanceof UserAccount) {
 			String username = ((UserAccount) principal).getUsername();
-			return getUserAccountWithRealmName(username);
+			return findUserAccountByUsername(username);
 		}
 		return null;
 	}
@@ -225,5 +226,4 @@ public abstract class BaseSecurityRealm extends AuthorizingRealm implements Role
 	 * @return
 	 */
 	protected abstract UserAccount findUserAccountByUsername(String username);
-
 }

@@ -52,6 +52,8 @@ body {
 								<input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
 							</fieldset>
 						</form>
+						
+						<a href='register/index'>注册</a>
 					</div>
 				</div>
 			</div>

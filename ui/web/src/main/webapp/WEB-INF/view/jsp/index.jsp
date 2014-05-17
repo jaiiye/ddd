@@ -7,7 +7,7 @@
 <%@ include file="header.jsp"%>
 </head>
 <body>
-
+	index页面
 	<%@ include file="footer.jsp"%>
 </body>
 </html>

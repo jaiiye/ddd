@@ -15,7 +15,8 @@
 		p:passwordService-ref="passwordService" />
 
 	<bean id="userAcountRealm" class="ui.web.realm.UserAccountRealm"
-		p:credentialsMatcher-ref="credentialsMatcher" depends-on="userAccountDao" />
+		p:credentialsMatcher-ref="credentialsMatcher" 
+		p:userAccountDao-ref="userAccountDao" />
 
 	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager" />
 
@@ -29,23 +30,32 @@
 
 	<bean id="sessionManager"
 		class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager"
-		p:sessionDAO-ref="sessionDAO" p:sessionIdCookieEnabled="true" />
+		p:sessionDAO-ref="sessionDAO" />
 
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager"
 		p:sessionManager-ref="sessionManager" p:cacheManager-ref="cacheManager"
 		p:realm-ref="userAcountRealm" />
 
+	<bean id="openSessionFilter"
+		class="org.springframework.orm.hibernate4.support.OpenSessionInViewFilter" />
+
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean"
 		p:securityManager-ref="securityManager" p:loginUrl="/login.jsp"
 		p:successUrl="/index.jsp" p:unauthorizedUrl="/unauthorized.jsp">
+		<property name="filters">
+			<map>
+				<entry key="session" value-ref="openSessionFilter" />
+			</map>
+		</property>
 		<property name="filterChainDefinitions">
 			<value>
-				/index.jsp = anon
-				/unauthorized.jsp = anon
 				/static/**= anon
-				/login.jsp= authc
 				/logout = logout
-				/** = user
+				/unauthorized.jsp = anon
+				/index.jsp =session, anon
+				/register/**=session,anon
+				/login.jsp=session, authc
+				/** =session, user
 			</value>
 		</property>
 	</bean>

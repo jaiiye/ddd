@@ -1,29 +1,31 @@
 package cn.ddd.core.tools;
 
-import static org.junit.Assert.fail;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import cn.ddd.core.security.domain.UserAccount;
-import cn.ddd.core.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:spring-*.xml" })
+@ContextConfiguration(locations = { "/spring-base.xml", "/spring-data.xml", "/spring-shiro.xml" })
 public class UserAccountServiceTest {
 	@Autowired
-	private UserService userService;
+	private ApplicationContext applicationContext;
 
 	@Test
 	public void testUserAccount() {
+
+		for (String bean : applicationContext.getBeanDefinitionNames()) {
+			System.out.println(bean);
+		}
+
 		UserAccount userAccount = new UserAccount();
 		userAccount.setUsername("lile");
 		userAccount.setCredentialsExpired(false);
 		userAccount.setLocked(false);
-		System.out.println(userAccount);
 	}
 
 }
