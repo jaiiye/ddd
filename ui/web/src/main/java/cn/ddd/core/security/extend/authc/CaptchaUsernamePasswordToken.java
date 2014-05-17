@@ -17,6 +17,14 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 public class CaptchaUsernamePasswordToken extends UsernamePasswordToken implements CaptchaAuthenticationToken {
 	private String captcha;
 
+	public CaptchaUsernamePasswordToken() {
+	}
+
+	public CaptchaUsernamePasswordToken(final String username, final String password, final boolean rememberMe, final String host, final String captcha) {
+		super(username, password, rememberMe, host);
+		this.captcha = captcha;
+	}
+
 	@Override
 	public String getCaptcha() {
 		return captcha;

@@ -19,13 +19,11 @@ import cn.ddd.core.security.extend.session.mgt.CaptchaMatcher;
  *          Copyright 2014 XXX有限公司.
  */
 public class DefaultCaptchaService implements CaptchaService {
-	public static final String CAPTCHA_SESSION_KEY = CaptchaMatcher.class
-			.getName() + ".RUN_AS_PRINCIPALS_SESSION_KEY";
+	public static final String CAPTCHA_SESSION_KEY = CaptchaMatcher.class.getName() + ".RUN_AS_PRINCIPALS_SESSION_KEY";
 
 	public boolean captchaMatch(Object submited) {
 		if (submited == null) {
-			throw new IllegalArgumentException(
-					"the submited captcha cannot be null!!");
+			throw new IllegalArgumentException("the submited captcha cannot be null!!");
 		}
 		Session session = SecurityUtils.getSubject().getSession(false);
 		if (session == null) {
@@ -39,10 +37,10 @@ public class DefaultCaptchaService implements CaptchaService {
 	@Override
 	public String generateCaptcha(Object target) {
 		String captcha = "1234";
+		// TODO:验证码生成规则
 
 		Session session = SecurityUtils.getSubject().getSession();
 		session.setAttribute(CAPTCHA_SESSION_KEY, captcha);
-
 		return captcha;
 	}
 }
