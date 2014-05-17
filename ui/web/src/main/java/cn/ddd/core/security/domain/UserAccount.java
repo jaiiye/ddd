@@ -26,9 +26,8 @@ import org.apache.shiro.util.StringUtils;
  * @version 1.0 2014年5月13日<br>
  *          Copyright 2014 XXX有限公司.
  */
-public class UserAccount implements Account, SaltedAuthenticationInfo {
+public class UserAccount extends Entity implements Account, SaltedAuthenticationInfo {
 	private transient PrincipalCollection principalCollection;
-
 	private String username;
 	private String password;
 	// HashedCredentialsMatcher会用到这个属性
