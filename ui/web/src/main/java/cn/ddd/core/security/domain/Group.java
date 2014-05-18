@@ -16,6 +16,10 @@ public class Group extends Entity {
 	private Group parent;
 	private String name;
 	private Set<Group> children = Sets.newHashSet();
+	/**
+	 * 是否为管理组织
+	 */
+	private boolean admin;
 
 	public boolean isRoot() {
 		return parent == null;
@@ -55,5 +59,13 @@ public class Group extends Entity {
 
 	public void setChildren(Set<Group> children) {
 		this.children = children;
+	}
+
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
 	}
 }

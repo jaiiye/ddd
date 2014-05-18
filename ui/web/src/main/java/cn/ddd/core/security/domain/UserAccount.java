@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.shiro.authc.Account;
 import org.apache.shiro.authc.SaltedAuthenticationInfo;
 import org.apache.shiro.authc.SimpleAccount;
@@ -35,8 +36,7 @@ public class UserAccount extends Entity implements Account, SaltedAuthentication
 
 	private Group group;
 
-	private Set<String> roles;
-	private Set<String> permissions;
+	private Set<Role> roles;
 
 	/**
 	 * Indicates this account is locked. This isn't honored by all
@@ -91,29 +91,19 @@ public class UserAccount extends Entity implements Account, SaltedAuthentication
 	 */
 	@Override
 	public Collection<String> getRoles() {
-		return roles;
+		if (roles == null)
+			return Collections.emptySet();
+		return CollectionUtils.collect(roles, (role) -> ((Role) role).getName());
 	}
 
 	@Override
 	public Collection<String> getStringPermissions() {
-		return permissions;
+		return Collections.emptySet();
 	}
 
 	@Override
 	public Collection<Permission> getObjectPermissions() {
 		return Collections.emptySet();
-	}
-
-	public Set<String> getPermissions() {
-		return permissions;
-	}
-
-	public void setPermissions(Set<String> permissions) {
-		this.permissions = permissions;
-	}
-
-	public void setRoles(Set<String> roles) {
-		this.roles = roles;
 	}
 
 	public Group getGroup() {

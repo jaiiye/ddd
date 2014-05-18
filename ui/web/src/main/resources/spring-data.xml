@@ -23,7 +23,9 @@
 			<list>
 				<value>classpath:cn/ddd/core/security/domain/UserAccount.hbm.xml
 				</value>
+				<value>classpath:cn/ddd/core/security/domain/Group.hbm.xml</value>
 				<value>classpath:cn/ddd/core/security/domain/Role.hbm.xml</value>
+				<value>classpath:cn/ddd/core/security/domain/System.hbm.xml</value>
 				<value>classpath:cn/ddd/core/security/domain/Module.hbm.xml</value>
 				<value>classpath:cn/ddd/core/security/domain/ResourcePermission.hbm.xml
 				</value>

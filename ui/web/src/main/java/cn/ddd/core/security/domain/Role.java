@@ -14,7 +14,7 @@ import com.google.common.collect.Sets;
  * @author 李乐 601235723@qq.com
  * @version 1.0 2014年5月18日 Copyright 2014 XXX有限公司.
  */
-public class Role extends Entity {
+public class Role extends Entity implements Permission {
 	private String name;
 	private Set<Permission> permissions = Sets.newHashSet();
 
@@ -36,5 +36,16 @@ public class Role extends Entity {
 
 	private void removePermission(String permission) {
 		permissions.remove(permission);
+	}
+
+	@Override
+	public boolean implies(Permission p) {
+		if (permissions != null) {
+			for (Permission permission : permissions) {
+				if (permission.implies(p))
+					return true;
+			}
+		}
+		return false;
 	}
 }

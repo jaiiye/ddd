@@ -11,10 +11,14 @@
 		<property column="locked" name="locked" />
 		<property column="credentialsExpired" name="credentialsExpired" />
 		<property access="field" column="salt" name="salt" />
-		<set name="roles" table="t_user_role">
+		<set name="roles" table="t_user_role" access="field">
 			<key column="user_id" />
-			<one-to-many class="Role" />
+			<many-to-many class="Role" column="role_id" />
 		</set>
-		<many-to-one name="group" class="Group" column="group_id"/>
+		<set name="permissions" table="t_user_permission" access="field">
+			<key column="user_id" />
+			<many-to-many class="ResourcePermission" column="permission_id" />
+		</set>
+		<many-to-one name="group" class="Group" column="group_id" />
 	</class>
 </hibernate-mapping>

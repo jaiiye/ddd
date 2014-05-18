@@ -23,14 +23,16 @@ public class ModuleTest {
 	@Test
 	@Transactional
 	public void testInsert() {
+		System newSystem = new System();
+
 		Module module = new Module();
-		module.setSystem(System.CORE);
+		module.setSystem(newSystem);
 		module.setName("用户管理");
 		module.setLink("user/index");
 		module.addAction("view");
 
 		Module internal = new Module();
-		internal.setSystem(System.CORE);
+		internal.setSystem(newSystem);
 		internal.setName("内部用户管理");
 		internal.setLink("user/internal");
 		internal.addAction("create");
