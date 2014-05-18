@@ -10,6 +10,14 @@ import java.util.StringTokenizer;
 
 import org.apache.shiro.util.CollectionUtils;
 
+/**
+ * String工具类，直接copy的shiro的工具类<br>
+ * 模块：<br>
+ * 描述：
+ * 
+ * @author 李乐 601235723@qq.com
+ * @version 1.0 2014年5月18日 Copyright 2014 XXX有限公司.
+ */
 public class Strings {
 	// TODO - complete JavaDoc
 
