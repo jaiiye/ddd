@@ -8,9 +8,6 @@
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
 	default-init-method="init" default-destroy-method="destroy">
 
-	<bean id="passwordService"
-		class="org.apache.shiro.authc.credential.DefaultPasswordService" />
-
 	<bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.PasswordMatcher"
 		p:passwordService-ref="passwordService" />
 
@@ -31,19 +28,12 @@
 		class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager"
 		p:sessionDAO-ref="sessionDAO" />
 
-	<bean id="authenticator"
-		class="cn.ddd.core.security.extend.session.mgt.CaptchaAuthenticator" />
-
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager"
 		p:sessionManager-ref="sessionManager" p:cacheManager-ref="cacheManager"
 		p:realm-ref="userAcountRealm" />
 
 	<bean id="openSessionFilter"
 		class="org.springframework.orm.hibernate4.support.OpenSessionInViewFilter" />
-
-	<bean id="authcFilter"
-		class="cn.ddd.core.security.extend.web.filter.authc.CaptchaFormAuthenticationFilter">
-	</bean>
 
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean"
 		p:securityManager-ref="securityManager" p:loginUrl="/login.jsp"

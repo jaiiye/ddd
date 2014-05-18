@@ -15,6 +15,9 @@
 
 	<context:property-placeholder location="classpath:dataSource.properties" />
 
+	<bean id="passwordService"
+		class="org.apache.shiro.authc.credential.DefaultPasswordService" />
+
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		init-method="init" destroy-method="close">
 		<property name="url" value="${jdbc.url}" />
