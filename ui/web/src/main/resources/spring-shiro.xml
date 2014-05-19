@@ -47,11 +47,11 @@
 			<value>
 				/static/**= anon
 				/logout = logout
-				/unauthorized.jsp = anon
+				/unauthorized.jsp =anon
 				/index.jsp =session, anon
 				/register/**=session,anon
-				/login.jsp=session, authc
-				/** =session, user
+				/login.jsp=session,authc
+				/** =session,authc
 			</value>
 		</property>
 	</bean>

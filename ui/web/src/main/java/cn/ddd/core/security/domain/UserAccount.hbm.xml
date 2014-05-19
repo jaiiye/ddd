@@ -15,10 +15,6 @@
 			<key column="user_id" />
 			<many-to-many class="Role" column="role_id" />
 		</set>
-		<set name="permissions" table="t_user_permission" access="field">
-			<key column="user_id" />
-			<many-to-many class="ResourcePermission" column="permission_id" />
-		</set>
 		<many-to-one name="group" class="Group" column="group_id" />
 	</class>
 </hibernate-mapping>
