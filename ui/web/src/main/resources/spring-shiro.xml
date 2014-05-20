@@ -36,7 +36,7 @@
 		class="org.springframework.orm.hibernate4.support.OpenSessionInViewFilter" />
 
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean"
-		p:securityManager-ref="securityManager" p:loginUrl="/login.jsp"
+		p:securityManager-ref="securityManager" p:loginUrl="/login/index"
 		p:successUrl="/index.jsp" p:unauthorizedUrl="/unauthorized.jsp">
 		<property name="filters">
 			<map>
@@ -50,7 +50,7 @@
 				/unauthorized.jsp =anon
 				/index.jsp =session, anon
 				/register/**=session,anon
-				/login.jsp=session,authc
+				/login/**=session,authc
 				/** =session,authc
 			</value>
 		</property>

@@ -1,49 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<html>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="zh-cn">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<style>
-body {
-	padding-top: 20px;
-}
-</style>
+<title>登陆</title>
+<link rel="stylesheet" href="static/style/login.css">
 </head>
 <body>
 	<div class="container">
-		<div class="row">
-			<div class="col-md-4 col-md-offset-4">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h3 class="panel-title">Please sign in</h3>
-					</div>
-					<div class="panel-body">
-						<form name="loginform" action="" method="POST"
-							accept-charset="UTF-8" role="form">
-							<fieldset>
-								<div class="form-group">
-									<input class="form-control" placeholder="Username or Email"
-										name="username" type="text">
-								</div>
-								<div class="form-group">
-									<input class="form-control" placeholder="Password"
-										name="password" type="password" value="">
-								</div>
-								<div class="checkbox">
-									<label><input name="rememberMe" type="checkbox"
-										value="true"> Remember Me </label>
-								</div>
-								<input class="btn btn-lg btn-success btn-block" type="submit"
-									value="Login">
-							</fieldset>
-						</form>
-
-						<a href='register/index'>注册</a>
-					</div>
-				</div>
-			</div>
-		</div>
+		<form class="form-signin" role="form" method="post">
+			<h2 class="form-signin-heading">欢迎登录</h2>
+			<input type="text" class="form-control" name="username" placeholder="Email address" required autofocus> 
+			<input type="password" class="form-control" name="password" placeholder="Password" required>
+			<label class="checkbox"><input type="checkbox" name="rememberMe" value="remember-me">Remember me</label>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+		</form>
 	</div>
 </body>
 </html>
