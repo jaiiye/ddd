@@ -19,4 +19,9 @@ public class GridController {
 	public String grid() {
 		return "snippets/grid";
 	}
+	
+	@RequestMapping("nav")
+	public String nav(){
+		return "snippets/nav";
+	}
 }
