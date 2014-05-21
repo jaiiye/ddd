@@ -3,6 +3,7 @@ package cn.ddd.core.security.extend.web.filter.authc;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
+import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.apache.shiro.web.util.WebUtils;
@@ -44,5 +45,11 @@ public class CaptchaFormAuthenticationFilter extends FormAuthenticationFilter {
 
 	protected String getCaptcha(ServletRequest request) {
 		return WebUtils.getCleanParam(request, getCaptchaParam());
+	}
+
+	@Override
+	protected void setFailureAttribute(ServletRequest request, AuthenticationException ae) {
+		// TODO:自定义输出错误消息
+		request.setAttribute(getFailureKeyAttribute(), ae.getMessage());
 	}
 }
