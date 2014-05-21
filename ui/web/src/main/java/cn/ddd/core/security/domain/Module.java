@@ -14,6 +14,7 @@ import com.google.common.collect.Sets;
  */
 public class Module extends Resource {
 	private Module parent;
+	private String title;
 	private String link;
 	private Set<Module> children = Sets.newHashSet();
 
@@ -31,6 +32,14 @@ public class Module extends Resource {
 
 	public void removeChild(Module child) {
 		children.remove(child);
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getLink() {

@@ -46,6 +46,7 @@
 		<property name="filterChainDefinitions">
 			<value>
 				/static/**= anon
+				/snippet/**=anon
 				/logout = logout
 				/unauthorized.jsp =anon
 				/index.jsp =session, anon

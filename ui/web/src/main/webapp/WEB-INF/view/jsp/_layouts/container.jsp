@@ -14,7 +14,11 @@
 <decorator:head />
 </head>
 <body>
-<decorator:body/>
+<div class="container">
+	<div class="row">
+		<decorator:body />
+	</div>
+</div>
 <jsp:include page="../_includes/scripts.jsp"/>
 </body>
 </html>
