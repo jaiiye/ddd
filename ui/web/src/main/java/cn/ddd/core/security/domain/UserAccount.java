@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.Set;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections.Transformer;
 import org.apache.shiro.authc.Account;
 import org.apache.shiro.authc.SaltedAuthenticationInfo;
 import org.apache.shiro.authc.SimpleAccount;
@@ -93,7 +94,12 @@ public class UserAccount extends Entity implements Account, SaltedAuthentication
 	public Collection<String> getRoles() {
 		if (roles == null)
 			return Collections.emptySet();
-		return CollectionUtils.collect(roles, (role) -> ((Role) role).getName());
+		return CollectionUtils.collect(roles,new Transformer() {
+			@Override
+			public Object transform(Object role) {
+				 return ((Role) role).getName();
+			}
+		});
 	}
 
 	@Override
