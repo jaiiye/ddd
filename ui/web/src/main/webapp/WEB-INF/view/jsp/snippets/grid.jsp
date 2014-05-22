@@ -1,6 +1,11 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <body>
 <div class="table-responsive">
+	所用语言：${locale}
+	<br>
+	<spring:message code="hello" text="没找到"/>
 	<h3 class="text-center"><strong>h3. Bootstrap heading</strong></h3>
 	<table class="table table-striped table-bordered">
 		<thead>

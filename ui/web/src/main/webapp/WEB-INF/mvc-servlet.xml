@@ -10,7 +10,16 @@
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
 	default-init-method="init" default-destroy-method="destroy">
 	<mvc:annotation-driven />
+
 	<context:component-scan base-package="ui.web.controller" />
+
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.CookieLocaleResolver" />
+
+	<mvc:interceptors>
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+	</mvc:interceptors>
+
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/view/jsp/" />
