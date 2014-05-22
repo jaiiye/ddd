@@ -34,4 +34,9 @@ public class GridController {
 	public String nav() {
 		return "snippets/nav";
 	}
+
+	@RequestMapping("panel")
+	public String panel() {
+		return "snippets/panel";
+	}
 }
