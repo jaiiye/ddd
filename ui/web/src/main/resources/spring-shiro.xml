@@ -37,7 +37,7 @@
 
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean"
 		p:securityManager-ref="securityManager" p:loginUrl="/login/index"
-		p:successUrl="/index.jsp" p:unauthorizedUrl="/unauthorized.jsp">
+		p:successUrl="/home/index" p:unauthorizedUrl="/unauthorized.jsp">
 		<property name="filters">
 			<map>
 				<entry key="session" value-ref="openSessionFilter" />
@@ -46,6 +46,7 @@
 		<property name="filterChainDefinitions">
 			<value>
 				/static/**= anon
+				/snippet/**=anon
 				/logout = logout
 				/unauthorized.jsp =anon
 				/index.jsp =session, anon

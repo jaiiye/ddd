@@ -24,24 +24,19 @@ public class ModuleTest {
 	@Transactional
 	public void testInsert() {
 		System newSystem = new System();
-
-		Module module = new Module();
-		module.setSystem(newSystem);
-		module.setName("用户管理");
-		module.setLink("user/index");
-		module.addAction("view");
+		newSystem.setName("XXX测试系统");
 
 		Module internal = new Module();
 		internal.setSystem(newSystem);
-		internal.setName("内部用户管理");
-		internal.setLink("user/internal");
+		internal.setTitle("用户管理");
+		internal.setName("user");
+		internal.setLink("user/index");
+		internal.addAction("view");
 		internal.addAction("create");
 		internal.addAction("update");
 		internal.addAction("delete");
 
-		module.addChild(internal);
-
 		Session session = factory.getCurrentSession();
-		session.save(module);
+		session.save(internal);
 	}
 }

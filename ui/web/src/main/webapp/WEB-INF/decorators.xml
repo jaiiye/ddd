@@ -4,6 +4,9 @@
 		<!-- These files will not get decorated. -->
 		<pattern>/static/</pattern>
 	</decorator>
+	<decorator name="container" page="container.jsp">
+		<pattern>/snippet/*</pattern>
+	</decorator>
 	<decorator name="default" page="default.jsp">
 		<pattern>/*</pattern>
 	</decorator>
