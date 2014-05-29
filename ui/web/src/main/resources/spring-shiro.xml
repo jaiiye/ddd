@@ -47,6 +47,9 @@
 			<value>
 				/static/**= anon
 				/snippet/**=anon
+				/controller/**=anon
+				/rest/**=anon
+				/settings/**=anon
 				/logout = logout
 				/unauthorized.jsp =anon
 				/index.jsp =session, anon

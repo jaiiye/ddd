@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div class="container">
-		<form class="form-signin" role="form" method="post">
+		<form class="form-signin" role="form" method="post" action="controller/request">
 			<h2 class="form-signin-heading">欢迎登录</h2>
 			<input type="text" class="form-control" name="username" placeholder="请输入用户名" required autofocus><br> 
 			<input type="password" class="form-control" name="password" placeholder="请输入密码" required>

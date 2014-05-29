@@ -1,5 +1,8 @@
 package cn.ddd.core.security.domain;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 /**
  * 系统枚举类<br>
  * 模块：<br>
@@ -10,7 +13,10 @@ package cn.ddd.core.security.domain;
  */
 public class System extends Entity {
 	public static final String ATTR_NAME = "name";
+	@NotNull
+	@Size(min = 5, max = 12)
 	private String name;
+	@NotNull
 	private String code;
 
 	public System() {
