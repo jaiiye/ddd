@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="page" uri="http://www.opensymphony.com/sitemesh/page" %>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -6,6 +7,12 @@
 <link rel="stylesheet" href="static/style/login.css">
 </head>
 <body>
+	<page:applyDecorator name="panel" page="home.jsp" />
+	<page:applyDecorator name="panel" title="Disclaimer">
+		This site is not legally binding in any way.<br>
+		All rights reserved. Elvis has left the building.
+	</page:applyDecorator>
+
 	<div class="container">
 		<form class="form-signin" role="form" method="post">
 			<h2 class="form-signin-heading">欢迎登录</h2>

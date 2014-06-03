@@ -9,12 +9,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<jsp:include page="../_includes/styles.jsp"/>
+<jsp:include page="_includes/styles.jsp"/>
 <title><decorator:title default="欢迎!"/></title>
 <decorator:head />
 </head>
 <body>
 <decorator:body/>
-<jsp:include page="../_includes/scripts.jsp"/>
+<jsp:include page="_includes/scripts.jsp"/>
 </body>
 </html>
