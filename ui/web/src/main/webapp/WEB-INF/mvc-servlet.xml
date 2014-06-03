@@ -13,16 +13,58 @@
 
 	<context:component-scan base-package="ui.web.controller" />
 
+	<bean id="themeSource"
+		class="org.springframework.ui.context.support.ResourceBundleThemeSource">
+		<property name="basenamePrefix" value="i18n.themes." />
+	</bean>
+
+	<bean id="themeResolver"
+		class="org.springframework.web.servlet.theme.CookieThemeResolver">
+		<property name="cookieName" value="theme" />
+		<property name="cookieMaxAge" value="1000000" />
+		<property name="defaultThemeName" value="default" />
+	</bean>
+
 	<bean id="localeResolver"
-		class="org.springframework.web.servlet.i18n.CookieLocaleResolver" />
+		class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+		<property name="cookieName" value="locale" />
+		<property name="cookieMaxAge" value="1000000" />
+		<property name="defaultLocale" value="zh_CN" />
+	</bean>
 
 	<mvc:interceptors>
-		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+		<mvc:interceptor>
+			<mvc:mapping path="/settings/locale" />
+			<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+				<property name="paramName" value="locale" />
+			</bean>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/settings/theme" />
+			<bean class="org.springframework.web.servlet.theme.ThemeChangeInterceptor">
+				<property name="paramName" value="theme" />
+			</bean>
+		</mvc:interceptor>
 	</mvc:interceptors>
 
-	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/view/jsp/" />
-		<property name="suffix" value=".jsp" />
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="ignoreDefaultModelOnRedirect" value="true" />
+		<property name="webBindingInitializer">
+			<bean class="ui.web.tools.DefaultBindingInitializer" />
+		</property>
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="viewResolvers">
+			<list>
+				<bean
+					class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+					<property name="prefix" value="/WEB-INF/view/jsp/" />
+					<property name="suffix" value=".jsp" />
+				</bean>
+			</list>
+		</property>
 	</bean>
 </beans>

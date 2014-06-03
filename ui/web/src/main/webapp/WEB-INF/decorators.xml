@@ -10,5 +10,4 @@
 	<decorator name="default" page="default.jsp">
 		<pattern>/*</pattern>
 	</decorator>
-	<decorator name="panel" page="panel.jsp"/>
 </decorators>

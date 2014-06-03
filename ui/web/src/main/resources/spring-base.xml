@@ -16,12 +16,8 @@
 	<context:property-placeholder location="classpath:dataSource.properties" />
 
 	<bean id="messageSource"
-		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-		<property name="basenames">
-			<list>
-				<value>classpath:i18n/message</value>
-			</list>
-		</property>
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="i18n.messages.message"/>
 	</bean>
 
 	<bean id="passwordService"
