@@ -10,4 +10,5 @@
 	<decorator name="default" page="default.jsp">
 		<pattern>/*</pattern>
 	</decorator>
+	<decorator name="dialog" page="_snippets/dialog.jsp"/>
 </decorators>
