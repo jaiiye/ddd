@@ -9,6 +9,7 @@
 	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
 	default-init-method="init" default-destroy-method="destroy">
+	
 	<mvc:annotation-driven />
 
 	<context:component-scan base-package="ui.web.controller" />
@@ -30,6 +31,11 @@
 		<property name="cookieName" value="locale" />
 		<property name="cookieMaxAge" value="1000000" />
 		<property name="defaultLocale" value="zh_CN" />
+	</bean>
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="100000" />
 	</bean>
 
 	<mvc:interceptors>
