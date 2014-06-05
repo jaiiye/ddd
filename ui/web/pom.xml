@@ -16,7 +16,7 @@
 		<mysql.version>5.1.27</mysql.version>
 		<slf4j.version>1.7.7</slf4j.version>
 		<guava.version>15.0</guava.version>
-		<sitemesh.version>2.4.2</sitemesh.version>
+		<tiles.version>3.0.4</tiles.version>
 		<hibernate.version>4.3.5.Final</hibernate.version>
 		<beanutils.version>1.9.1</beanutils.version>
 		<druid.version>1.0.5</druid.version>
@@ -125,9 +125,9 @@
 			<version>${slf4j.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>opensymphony</groupId>
-			<artifactId>sitemesh</artifactId>
-			<version>${sitemesh.version}</version>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-extras</artifactId>
+			<version>${tiles.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
