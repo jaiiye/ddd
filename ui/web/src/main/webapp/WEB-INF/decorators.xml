@@ -11,4 +11,6 @@
 		<pattern>/*</pattern>
 	</decorator>
 	<decorator name="dialog" page="_snippets/dialog.jsp"/>
+	<decorator name="grid" page="_snippets/grid.jsp"/>
+	<decorator name="panel" page="_snippets/panel.jsp"/>
 </decorators>
