@@ -8,7 +8,7 @@ import javax.servlet.ServletResponse;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 
 /**
- * 模块：多系统登录页面控制<br>
+ * 模块：多系统登录页面验证控制filter，未登录成功跳转到相应系统的登录页面<br>
  * 描述：
  * 
  * @author Administrator

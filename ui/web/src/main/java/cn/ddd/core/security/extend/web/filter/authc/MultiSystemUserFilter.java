@@ -8,7 +8,7 @@ import javax.servlet.ServletResponse;
 import org.apache.shiro.web.filter.authc.UserFilter;
 
 /**
- * 模块：多个系统公用一个shiro时要用cookie分辨系统<br>
+ * 模块：多系统用户登录filter，只允许已登录的用户访问，否则跳转到相应系统的登录页面<br>
  * 描述：
  * 
  * @author Administrator

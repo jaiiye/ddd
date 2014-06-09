@@ -16,7 +16,7 @@ import org.apache.shiro.web.util.WebUtils;
 import com.google.common.collect.Maps;
 
 /**
- * 模块：<br>
+ * 模块：多系统登录配置信息保持器<br>
  * 描述：
  * 
  * @author Administrator
