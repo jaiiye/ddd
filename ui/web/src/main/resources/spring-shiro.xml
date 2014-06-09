@@ -41,6 +41,8 @@
 		<property name="filters">
 			<map>
 				<entry key="session" value-ref="openSessionFilter" />
+				<entry key="authc" value-ref="authcFilter"/>
+				<entry key="user" value-ref="userFilter"/>
 			</map>
 		</property>
 		<property name="filterChainDefinitions">
@@ -55,7 +57,7 @@
 				/index.jsp =session, anon
 				/register/**=session,anon
 				/login/**=session,authc
-				/** =session,authc
+				/** =session,user
 			</value>
 		</property>
 	</bean>
@@ -67,5 +69,13 @@
 	<bean
 		class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
 		<property name="securityManager" ref="securityManager" />
+	</bean>
+	
+	<bean id="authenticationSettingHolder" class="cn.ddd.core.security.extend.web.filter.authc.AuthenticationSettingHolder"/>
+	<bean id="userFilter" class="cn.ddd.core.security.extend.web.filter.authc.MultiSystemUserFilter">
+		<property name="settingHolder" ref="authenticationSettingHolder"/>
+	</bean>
+	<bean id="authcFilter" class="cn.ddd.core.security.extend.web.filter.authc.MultiSystemAuthenticationFilter">
+		<property name="settingHolder" ref="authenticationSettingHolder"/>
 	</bean>
 </beans>
