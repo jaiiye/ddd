@@ -18,12 +18,7 @@ import com.google.common.collect.Sets;
  * @version 1.0 2014年5月18日 Copyright 2014 XXX有限公司.
  */
 public abstract class Resource extends Entity {
-
 	public static final String ACTION_DIVIDER_TOKEN = ",";
-	/**
-	 * 所属系统
-	 */
-	private System system;
 	/**
 	 * 资源名称
 	 */
@@ -33,14 +28,6 @@ public abstract class Resource extends Entity {
 	 * 该资源所有可执行的操作
 	 */
 	private Set<String> actions = Sets.newHashSet();
-
-	public System getSystem() {
-		return system;
-	}
-
-	public void setSystem(System system) {
-		this.system = system;
-	}
 
 	public String getName() {
 		return name;

@@ -61,4 +61,8 @@ public class Module extends Resource {
 	public Set<Module> getChildren() {
 		return children;
 	}
+
+	public void accept(ModuleVisitor visitor) {
+		visitor.visit(this);
+	}
 }

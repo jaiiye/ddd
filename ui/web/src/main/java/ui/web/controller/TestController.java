@@ -64,19 +64,6 @@ public class TestController {
 		return model;
 	}
 
-	@RequestMapping("validator")
-	public void testValidate(@Valid cn.ddd.core.security.domain.System system, BindingResult result) {
-		System.out.println(system.getName());
-		System.out.println(system.getCode());
-
-		if (result.hasErrors()) {
-			for (ObjectError error : result.getAllErrors()) {
-				System.out.println(error.getCode());
-				System.out.println(error.getDefaultMessage());
-			}
-		}
-	}
-
 	@RequestMapping("header")
 	public void testHeader(@RequestHeader String header) {
 		System.out.println(header);

@@ -11,7 +11,6 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.ddd.core.security.domain.Module;
-import cn.ddd.core.security.domain.System;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/spring-base.xml", "/spring-data.xml" })
@@ -23,11 +22,8 @@ public class ModuleTest {
 	@Test
 	@Transactional
 	public void testInsert() {
-		System newSystem = new System();
-		newSystem.setName("XXX测试系统");
 
 		Module internal = new Module();
-		internal.setSystem(newSystem);
 		internal.setTitle("用户管理");
 		internal.setName("user");
 		internal.setLink("user/index");
