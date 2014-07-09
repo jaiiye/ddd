@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import cn.ddd.core.dao.UserAccountDao;
+import cn.ddd.core.dao.AccountRepository;
 import cn.ddd.core.security.domain.UserAccount;
 import cn.ddd.core.service.UserService;
 
@@ -13,7 +13,7 @@ import cn.ddd.core.service.UserService;
 @Transactional
 public class UserServiceImpl implements UserService {
 	@Autowired
-	private UserAccountDao userAccountDao;
+	private AccountRepository userAccountDao;
 	@Autowired
 	private PasswordService passwordService;
 
@@ -26,6 +26,6 @@ public class UserServiceImpl implements UserService {
 
 		userAccount.setPassword(encrypted.toString());
 
-		userAccountDao.persist(userAccount);
+		userAccountDao.save(userAccount);
 	}
 }

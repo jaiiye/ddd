@@ -43,6 +43,7 @@
 				<entry key="session" value-ref="openSessionFilter" />
 				<entry key="authc" value-ref="authcFilter"/>
 				<entry key="user" value-ref="userFilter"/>
+				<entry key="ssl" value-ref="sslFilter"/>
 			</map>
 		</property>
 		<property name="filterChainDefinitions">
@@ -56,7 +57,7 @@
 				/unauthorized.jsp =anon
 				/index.jsp =session, anon
 				/register/**=session,anon
-				/login/**=session,authc
+				/login/**=ssl,session,authc
 				/** =session,user
 			</value>
 		</property>
@@ -72,10 +73,14 @@
 	</bean>
 	
 	<bean id="authenticationSettingHolder" class="cn.ddd.core.security.extend.web.filter.authc.AuthenticationSettingHolder"/>
+	
 	<bean id="userFilter" class="cn.ddd.core.security.extend.web.filter.authc.MultiSystemUserFilter">
 		<property name="settingHolder" ref="authenticationSettingHolder"/>
 	</bean>
 	<bean id="authcFilter" class="cn.ddd.core.security.extend.web.filter.authc.MultiSystemAuthenticationFilter">
 		<property name="settingHolder" ref="authenticationSettingHolder"/>
+	</bean>
+	<bean id="sslFilter" class="org.apache.shiro.web.filter.authz.SslFilter">
+		<property name="port" value="8443"/>
 	</bean>
 </beans>

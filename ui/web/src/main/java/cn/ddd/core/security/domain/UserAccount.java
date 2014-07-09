@@ -35,7 +35,7 @@ public class UserAccount extends Entity implements Account, SaltedAuthentication
 	// HashedCredentialsMatcher会用到这个属性
 	private String salt;
 
-	private Group group;
+	private Organization organization;
 
 	private Set<Role> roles;
 
@@ -112,12 +112,12 @@ public class UserAccount extends Entity implements Account, SaltedAuthentication
 		return Collections.emptySet();
 	}
 
-	public Group getGroup() {
-		return group;
+	protected Organization getOrganization() {
+		return organization;
 	}
 
-	public void setGroup(Group group) {
-		this.group = group;
+	protected void setOrganization(Organization organization) {
+		this.organization = organization;
 	}
 
 	public boolean isLocked() {

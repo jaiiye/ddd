@@ -49,6 +49,11 @@ public abstract class Resource extends Entity {
 		this.actions.add(action);
 	}
 
+	public void setActions(Set<String> actions) {
+		this.actions.clear();
+		this.actions = actions;
+	}
+
 	public void setActionStr(String actionStr) {
 		if (StringUtils.isNotBlank(actionStr)) {
 			this.actions = Strings.splitToSet(actionStr, ACTION_DIVIDER_TOKEN);

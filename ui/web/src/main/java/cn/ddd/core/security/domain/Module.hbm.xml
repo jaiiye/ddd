@@ -10,7 +10,6 @@
 		<property column="title" name="title" />
 		<property column="link" name="link" />
 		<many-to-one name="parent" column="parent_id" class="Module" />
-		<many-to-one name="system" column="system_id" class="System" cascade="save-update"/>
 		<property name="actionStr" column="actions" not-null="false" />
 		<set name="children" cascade="save-update" access="field">
 			<key column="parent_id" />

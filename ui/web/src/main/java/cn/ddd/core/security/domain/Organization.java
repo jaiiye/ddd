@@ -12,10 +12,12 @@ import com.google.common.collect.Sets;
  * @author 李乐 601235723@qq.com
  * @version 1.0 2014年5月18日 Copyright 2014 XXX有限公司.
  */
-public class Group extends Entity {
-	private Group parent;
+public class Organization extends Entity {
+	private static final long serialVersionUID = 1L;
+	private Organization parent;
+	private Set<Organization> children = Sets.newHashSet();
+
 	private String name;
-	private Set<Group> children = Sets.newHashSet();
 	/**
 	 * 是否为管理组织
 	 */
@@ -29,11 +31,11 @@ public class Group extends Entity {
 		return children == null || children.isEmpty();
 	}
 
-	public void addChild(Group child) {
+	public void addChild(Organization child) {
 		children.add(child);
 	}
 
-	public void removeChild(Group child) {
+	public void removeChild(Organization child) {
 		children.remove(child);
 	}
 
@@ -45,19 +47,19 @@ public class Group extends Entity {
 		this.name = name;
 	}
 
-	public Group getParent() {
+	public Organization getParent() {
 		return parent;
 	}
 
-	public void setParent(Group parent) {
+	public void setParent(Organization parent) {
 		this.parent = parent;
 	}
 
-	public Set<Group> getChildren() {
+	public Set<Organization> getChildren() {
 		return children;
 	}
 
-	public void setChildren(Set<Group> children) {
+	public void setChildren(Set<Organization> children) {
 		this.children = children;
 	}
 

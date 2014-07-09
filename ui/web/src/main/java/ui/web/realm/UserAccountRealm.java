@@ -9,7 +9,7 @@ import java.util.Collection;
 import org.apache.shiro.authz.Permission;
 import org.springframework.context.ApplicationListener;
 
-import cn.ddd.core.dao.UserAccountDao;
+import cn.ddd.core.dao.AccountRepository;
 import cn.ddd.core.events.UserAccountEvent;
 import cn.ddd.core.security.domain.UserAccount;
 import cn.ddd.core.security.extend.realm.BaseSecurityRealm;
@@ -23,15 +23,15 @@ import cn.ddd.core.security.extend.realm.BaseSecurityRealm;
  *          Copyright 2014 XXX有限公司.
  */
 public class UserAccountRealm extends BaseSecurityRealm implements ApplicationListener<UserAccountEvent> {
-	private UserAccountDao userAccountDao;
+	private AccountRepository userAccountDao;
 
-	public void setUserAccountDao(UserAccountDao userAccountDao) {
+	public void setUserAccountDao(AccountRepository userAccountDao) {
 		this.userAccountDao = userAccountDao;
 	}
 
 	@Override
 	protected Collection<Permission> findPermissionsByRoleName(String roleName) {
-		return userAccountDao.findPermissionsByRoleName(roleName);
+		return null;
 	}
 
 	@Override
