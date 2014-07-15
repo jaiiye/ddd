@@ -1,17 +1,16 @@
-package cn.ddd.core.service.impl;
+package cn.ddd.core.security.application;
 
 import org.apache.shiro.authc.credential.PasswordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import cn.ddd.core.dao.AccountRepository;
 import cn.ddd.core.security.domain.UserAccount;
-import cn.ddd.core.service.UserService;
+import cn.ddd.core.security.infrastructure.repository.AccountRepository;
 
 @Service
 @Transactional
-public class UserServiceImpl implements UserService {
+public class UserService {
 	@Autowired
 	private AccountRepository userAccountDao;
 	@Autowired

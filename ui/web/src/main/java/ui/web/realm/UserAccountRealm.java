@@ -9,10 +9,10 @@ import java.util.Collection;
 import org.apache.shiro.authz.Permission;
 import org.springframework.context.ApplicationListener;
 
-import cn.ddd.core.dao.AccountRepository;
-import cn.ddd.core.events.UserAccountEvent;
 import cn.ddd.core.security.domain.UserAccount;
+import cn.ddd.core.security.domain.event.UserAccountEvent;
 import cn.ddd.core.security.extend.realm.BaseSecurityRealm;
+import cn.ddd.core.security.infrastructure.repository.AccountRepository;
 
 /**
  * 模块：<br>

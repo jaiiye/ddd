@@ -1,11 +1,9 @@
-package cn.ddd.core.service.impl;
+package cn.ddd.core.security.application;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cn.ddd.core.dao.ModuleDao;
-import cn.ddd.core.security.domain.Module;
-import cn.ddd.core.service.ModuleService;
+import cn.ddd.core.security.infrastructure.repository.ModuleDao;
 
 /**
  * 
@@ -17,12 +15,11 @@ import cn.ddd.core.service.ModuleService;
  *          Copyright 2014 XXX有限公司.
  */
 @Service
-public class ModuleImpl implements ModuleService {
+public class ModuleService {
 	@Autowired
 	private ModuleDao moduleDao;
 
-	@Override
-	public void addNewModule(Module module) {
+	public void addNewModule(cn.ddd.core.security.domain.Module module) {
 		moduleDao.persist(module);
 	}
 }

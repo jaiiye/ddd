@@ -1,4 +1,4 @@
-package cn.ddd.core.events;
+package cn.ddd.core.security.domain.event;
 
 import org.springframework.context.ApplicationEvent;
 
