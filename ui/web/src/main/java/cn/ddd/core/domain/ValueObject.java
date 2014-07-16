@@ -2,7 +2,9 @@
  * Copyright (C), 2014.
  * All right reserved.
  */
-package cn.ddd.core.security.domain;
+package cn.ddd.core.domain;
+
+import java.io.Serializable;
 
 /**
  * 模块：值对象<br>
@@ -12,14 +14,14 @@ package cn.ddd.core.security.domain;
  * @version 1.0 2014-1-2<br>
  *          Copyright 2014
  */
-public abstract class ValueObject {
-	private long id;
+public abstract class ValueObject<T extends Serializable> implements Serializable {
+	private T id;
 
-	protected long getId() {
+	protected T getId() {
 		return id;
 	}
 
-	protected void setId(long id) {
+	protected void setId(T id) {
 		this.id = id;
 	}
 }

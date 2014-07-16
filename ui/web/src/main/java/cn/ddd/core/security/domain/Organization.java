@@ -2,6 +2,8 @@ package cn.ddd.core.security.domain;
 
 import java.util.Set;
 
+import cn.ddd.core.domain.BaseEntity;
+
 import com.google.common.collect.Sets;
 
 /**
@@ -12,7 +14,7 @@ import com.google.common.collect.Sets;
  * @author 李乐 601235723@qq.com
  * @version 1.0 2014年5月18日 Copyright 2014 XXX有限公司.
  */
-public class Organization extends Entity {
+public class Organization extends BaseEntity<Long> {
 	private static final long serialVersionUID = 1L;
 	private Organization parent;
 	private Set<Organization> children = Sets.newHashSet();

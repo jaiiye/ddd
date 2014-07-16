@@ -2,6 +2,8 @@ package cn.ddd.core.security.domain;
 
 import java.util.Set;
 
+import cn.ddd.core.domain.BaseEntity;
+
 /**
  * 组织结构<br>
  * 模块：<br>
@@ -10,7 +12,7 @@ import java.util.Set;
  * @author 李乐 601235723@qq.com
  * @version 1.0 2014年7月9日 Copyright 2014 XXX有限公司.
  */
-public class OrgStructure extends Entity {
+public class OrgStructure extends BaseEntity<Long>  {
 	private Organization parent;
 	private Set<Organization> children;
 	private OrgStructureType type;

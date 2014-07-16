@@ -1,6 +1,6 @@
 package cn.ddd.core.tools;
 
-import cn.ddd.core.security.domain.Entity;
+import cn.ddd.core.domain.Entity;
 
 /**
  * 聚合工厂

@@ -5,6 +5,7 @@ import java.util.Set;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 
+import cn.ddd.core.domain.BaseEntity;
 import cn.ddd.core.tools.Strings;
 
 import com.google.common.collect.Sets;
@@ -17,7 +18,7 @@ import com.google.common.collect.Sets;
  * @author 李乐 601235723@qq.com
  * @version 1.0 2014年5月18日 Copyright 2014 XXX有限公司.
  */
-public abstract class Resource extends Entity {
+public abstract class Resource extends BaseEntity<Long>  {
 	public static final String ACTION_DIVIDER_TOKEN = ",";
 	/**
 	 * 资源名称
