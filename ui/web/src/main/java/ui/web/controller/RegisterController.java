@@ -5,8 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import cn.ddd.core.security.application.UserService;
 import cn.ddd.core.security.domain.UserAccount;
-import cn.ddd.core.service.UserService;
 
 /**
  * 用户注册控制器<br>

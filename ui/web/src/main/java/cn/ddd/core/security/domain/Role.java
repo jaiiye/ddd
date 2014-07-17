@@ -4,6 +4,8 @@ import java.util.Set;
 
 import org.apache.shiro.authz.Permission;
 
+import cn.ddd.core.domain.BaseEntity;
+
 import com.google.common.collect.Sets;
 
 /**
@@ -14,7 +16,7 @@ import com.google.common.collect.Sets;
  * @author 李乐 601235723@qq.com
  * @version 1.0 2014年5月18日 Copyright 2014 XXX有限公司.
  */
-public class Role extends Entity implements Permission {
+public class Role extends BaseEntity<Long> implements Permission {
 	private String name;
 	private Set<Permission> permissions = Sets.newHashSet();
 

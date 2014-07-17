@@ -5,6 +5,7 @@ import java.util.Set;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 
+import cn.ddd.core.domain.BaseEntity;
 import cn.ddd.core.tools.Strings;
 
 import com.google.common.collect.Sets;
@@ -17,13 +18,8 @@ import com.google.common.collect.Sets;
  * @author 李乐 601235723@qq.com
  * @version 1.0 2014年5月18日 Copyright 2014 XXX有限公司.
  */
-public abstract class Resource extends Entity {
-
+public abstract class Resource extends BaseEntity<Long>  {
 	public static final String ACTION_DIVIDER_TOKEN = ",";
-	/**
-	 * 所属系统
-	 */
-	private System system;
 	/**
 	 * 资源名称
 	 */
@@ -33,14 +29,6 @@ public abstract class Resource extends Entity {
 	 * 该资源所有可执行的操作
 	 */
 	private Set<String> actions = Sets.newHashSet();
-
-	public System getSystem() {
-		return system;
-	}
-
-	public void setSystem(System system) {
-		this.system = system;
-	}
 
 	public String getName() {
 		return name;
@@ -60,6 +48,11 @@ public abstract class Resource extends Entity {
 
 	public void addAction(String action) {
 		this.actions.add(action);
+	}
+
+	public void setActions(Set<String> actions) {
+		this.actions.clear();
+		this.actions = actions;
 	}
 
 	public void setActionStr(String actionStr) {

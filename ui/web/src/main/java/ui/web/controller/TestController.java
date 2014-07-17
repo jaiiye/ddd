@@ -3,21 +3,16 @@ package ui.web.controller;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.Map.Entry;
-
-import javax.validation.Valid;
+import java.util.Set;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -62,19 +57,6 @@ public class TestController {
 	@RequestMapping("body")
 	public Object restResponseBody(Map<String, Object> model) {
 		return model;
-	}
-
-	@RequestMapping("validator")
-	public void testValidate(@Valid cn.ddd.core.security.domain.System system, BindingResult result) {
-		System.out.println(system.getName());
-		System.out.println(system.getCode());
-
-		if (result.hasErrors()) {
-			for (ObjectError error : result.getAllErrors()) {
-				System.out.println(error.getCode());
-				System.out.println(error.getDefaultMessage());
-			}
-		}
 	}
 
 	@RequestMapping("header")

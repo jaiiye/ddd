@@ -19,6 +19,8 @@ import org.apache.shiro.subject.SimplePrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 import org.apache.shiro.util.StringUtils;
 
+import cn.ddd.core.domain.BaseEntity;
+
 /**
  * 模块：自定义的账号类，可以返回用户的任何信息，包括授权信息和角色信息，此类实现了Account，可以从Subject.
  * getPrincipal方法获取此对象<br>
@@ -28,14 +30,14 @@ import org.apache.shiro.util.StringUtils;
  * @version 1.0 2014年5月13日<br>
  *          Copyright 2014 XXX有限公司.
  */
-public class UserAccount extends Entity implements Account, SaltedAuthenticationInfo {
+public class UserAccount extends BaseEntity<Long> implements Account, SaltedAuthenticationInfo {
 	private transient PrincipalCollection principalCollection;
 	private String username;
 	private String password;
 	// HashedCredentialsMatcher会用到这个属性
 	private String salt;
 
-	private Group group;
+	private Organization organization;
 
 	private Set<Role> roles;
 
@@ -94,10 +96,10 @@ public class UserAccount extends Entity implements Account, SaltedAuthentication
 	public Collection<String> getRoles() {
 		if (roles == null)
 			return Collections.emptySet();
-		return CollectionUtils.collect(roles,new Transformer() {
+		return CollectionUtils.collect(roles, new Transformer() {
 			@Override
 			public Object transform(Object role) {
-				 return ((Role) role).getName();
+				return ((Role) role).getName();
 			}
 		});
 	}
@@ -112,12 +114,12 @@ public class UserAccount extends Entity implements Account, SaltedAuthentication
 		return Collections.emptySet();
 	}
 
-	public Group getGroup() {
-		return group;
+	protected Organization getOrganization() {
+		return organization;
 	}
 
-	public void setGroup(Group group) {
-		this.group = group;
+	protected void setOrganization(Organization organization) {
+		this.organization = organization;
 	}
 
 	public boolean isLocked() {

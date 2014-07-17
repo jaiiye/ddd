@@ -1,6 +1,6 @@
-package cn.ddd.core.dao;
+package cn.ddd.core.security.infrastructure.repository;
 
-import cn.ddd.core.security.domain.Entity;
+import cn.ddd.core.domain.Entity;
 
 /**
  * 
