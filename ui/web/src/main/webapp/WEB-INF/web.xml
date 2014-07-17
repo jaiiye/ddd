@@ -7,7 +7,6 @@
 		<servlet-name>default</servlet-name>
 		<url-pattern>/static/*</url-pattern>
 	</servlet-mapping>
-
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:spring-*.xml</param-value>
@@ -16,20 +15,6 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-
-	<listener>
-	    <listener-class>org.apache.tiles.extras.complete.CompleteAutoloadTilesListener</listener-class>
-	</listener>
-
-	<servlet>
-	    <servlet-name>Tiles Dispatch Servlet</servlet-name>
-	    <servlet-class>org.apache.tiles.web.util.TilesDispatchServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-	    <servlet-name>Tiles Dispatch Servlet</servlet-name>
-	    <url-pattern>*.tiles</url-pattern>
-	</servlet-mapping>
-
 	<filter>
 		<filter-name>shiroFilter</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
