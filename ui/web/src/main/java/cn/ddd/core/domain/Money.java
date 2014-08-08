@@ -15,7 +15,7 @@ import org.apache.commons.lang.ObjectUtils;
  * @version 1.0 2014年7月19日<br>
  *          Copyright 2014 XXX有限公司.
  */
-public final class Money extends ValueObject<Long> implements Comparable<Money> {
+public final class Money implements Comparable<Money>, ValueObject<Long> {
 	private static final int[] cents = new int[] { 1, 10, 100, 1000, 10000 };
 
 	private long amount;

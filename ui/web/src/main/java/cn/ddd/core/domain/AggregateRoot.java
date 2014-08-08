@@ -9,5 +9,5 @@ import java.io.Serializable;
  * @author 李乐 601235723@qq.com
  * @version 1.0 2014年7月16日 Copyright 2014 XXX有限公司.
  */
-public interface Aggregate<T extends Serializable> extends Entity<T> {
+public interface AggregateRoot<T extends Serializable> extends Entity<T> {
 }
